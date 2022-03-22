@@ -17,6 +17,7 @@ public class InputService {
     }
 
     public void takeInput(){
+    	try(Scanner sc = new Scanner(System.in)){
         while (true) {
             System.out.print("\n!! Welcome, please choose from the following options !!\n" +
                     "1 - Add new contact\n" +
@@ -25,9 +26,9 @@ public class InputService {
                     "4 - Exit\n" +
                     "Please make a selection (1/2/3/4) : ");
 
-            Scanner sc = new Scanner(System.in);
+            
 
-            String input = sc.nextLine();
+            String input = sc.hasNextLine()? sc.nextLine() : "";
 
             String invalidInputMsg = "Invalid selection. Please try again.";
             try {
@@ -56,6 +57,7 @@ public class InputService {
             } catch (NumberFormatException ex) {
                 System.out.println(invalidInputMsg);
             }
+        }
         }
     }
 
